@@ -5,7 +5,10 @@ export const item = (props) => {
   return (
     <div className='item-style'>
       {props.isEditable ? (
-        <input defaultValue={props.name}></input>
+        <input
+          defaultValue={props.name}
+          onKeyPress={(event) => props.keyPress(event, props.identifier)}
+        ></input>
       ) : (
         <div>
           <p className='small-text'>(Double click name to edit)</p>

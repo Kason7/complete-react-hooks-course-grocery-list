@@ -4,6 +4,9 @@ import './App.css';
 // Import components
 import Item from './components/item';
 
+// Import custom hooks
+import useList from './hooks/useList';
+
 const initList = [
   { name: 'tomato', calories: 20 },
   { name: 'rice', calories: 30 },
@@ -13,38 +16,44 @@ const initList = [
 // Start of component
 function App() {
   // State init
-  const [list, setList] = useState(initList);
   const [editable, setEditable] = useState(false);
 
-  // State methods
-  const removeUnhealthy = () => {
-    const listCopy = [...list];
-    const filteredList = listCopy.filter((v) => v.calories < 50);
-    setList(filteredList);
-    console.log(filteredList);
-  };
-  const removeItem = (index) => {
-    const listCopy = [...list];
-    listCopy.splice(index, 1);
-    setList(listCopy);
-  };
+  // Calling custom hooks
+  const items = useList(initList);
 
-  // Editable toggle
+  // State method: Remove Unhealthy with Custom Hook
+  const removeUnhealthy = () => {
+    items.removeUnhealthy();
+  };
+  // State method: Remove items in list with Custom Hook
+  const removeItem = (index) => {
+    items.removeItem(index);
+  };
+  // State method: Editable toggle
   const editableHandler = () => {
-    setEditable(true);
+    setEditable(!editable);
+  };
+  // State method: Save edited name with Custom Hook and Local Hook
+  const saveNameHandler = (event, index) => {
+    items.saveNameHandler(event, index);
+    if (event.which === 13 || event.keyCode === 13) {
+      setEditable(!editable);
+    }
   };
 
   // List map
   const itemsList = () =>
-    list.map((itemContent, index) => {
+    items.list.map((itemContent, index) => {
       return (
         <Item
           key={index}
+          identifier={index}
           name={itemContent.name}
           calories={itemContent.calories}
           delete={() => removeItem(index)}
           isEditable={editable}
           edit={editableHandler}
+          keyPress={saveNameHandler}
         />
       );
     });
