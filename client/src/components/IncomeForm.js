@@ -15,6 +15,8 @@ export const IncomeForm = () => {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     console.log('submitted', name, income);
+    setName('');
+    setIncome('');
   };
 
   return (

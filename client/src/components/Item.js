@@ -1,7 +1,7 @@
 import React from 'react';
 import './item.css';
 
-export const item = (props) => {
+export const Item = (props) => {
   return (
     <div className='item-style'>
       {props.isEditable ? (
@@ -23,4 +23,4 @@ export const item = (props) => {
   );
 };
 
-export default item;
+export default Item;

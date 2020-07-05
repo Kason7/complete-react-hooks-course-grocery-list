@@ -42,3 +42,13 @@
   padding: 10px 0px;
   margin: 20px;
 }
+.form-container {
+  margin-bottom: 50px;
+}
+.form-field {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+  justify-content: space-between;
+  width: 250px;
+}

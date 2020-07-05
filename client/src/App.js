@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import './App.css';
 
 // Import components
-import Item from './components/item';
-import IncomeForm from './components/incomeForm';
+import Item from './components/Item';
+import IncomeForm from './components/IncomeForm';
+import MarriageForm from './components/MarriageForm';
 
 // Import custom hooks
 import useList from './hooks/useList';
@@ -71,9 +72,16 @@ function App() {
           </button>
         </div>
         <div>
-          <h2>Income Form</h2>
-          <p className='small-text'>(onChange Event Lesson)</p>
-          <IncomeForm />
+          <div className='form-container'>
+            <h2>Income Form</h2>
+            <p className='small-text'>(onChange Event Lesson)</p>
+            <IncomeForm />
+          </div>
+          <div className='form-container'>
+            <h2>Marriage Form</h2>
+            <p className='small-text'>(useRef Hook Lesson)</p>
+            <MarriageForm />
+          </div>
         </div>
       </header>
     </div>
