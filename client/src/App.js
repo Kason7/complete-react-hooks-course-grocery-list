@@ -3,6 +3,7 @@ import './App.css';
 
 // Import components
 import Item from './components/item';
+import IncomeForm from './components/incomeForm';
 
 // Import custom hooks
 import useList from './hooks/useList';
@@ -62,11 +63,18 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <h1>Grocery List</h1>
-        {itemsList()}
-        <button onClick={removeUnhealthy} className='list-button'>
-          Remove unhealthy
-        </button>
+        <div>
+          <h1>Grocery List</h1>
+          {itemsList()}
+          <button onClick={removeUnhealthy} className='list-button'>
+            Remove unhealthy
+          </button>
+        </div>
+        <div>
+          <h2>Income Form</h2>
+          <p className='small-text'>(onChange Event Lesson)</p>
+          <IncomeForm />
+        </div>
       </header>
     </div>
   );
